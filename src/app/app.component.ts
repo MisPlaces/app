@@ -9,12 +9,12 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import {LugaresPage} from "../pages/lugares/lugares";
+import { LugaresPage } from "../pages/lugares/lugares";
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: any = DestinoPage;
+  rootPage: any = SeleccionarModoPage;
   @ViewChild(Nav) nav: Nav;
 
   constructor(platform: Platform,
@@ -52,7 +52,7 @@ export class MyApp {
     });
   }
 
-  seleccionarModo(){
+  seleccionarModo() {
     this.nav.setRoot(SeleccionarModoPage);
   }
 
@@ -63,7 +63,7 @@ export class MyApp {
 
   }
 
-  lugar(){
+  lugar() {
     // this.nav.push(LugarPage);
   }
 }

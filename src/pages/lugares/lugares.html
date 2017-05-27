@@ -31,10 +31,12 @@
     </ion-refresher>
 
     <ion-grid no-padding>
-        <ion-row *ngIf="categoriaSel">
-            <ion-title text-center>
-                <h1>{{categoriaSel?.nombre}}</h1>
-            </ion-title>
+        <ion-row *ngIf="categoriaSel" text-center>
+
+            <ion-col>
+                <h1 color="primary">{{categoriaSel.nombre}}</h1>
+            </ion-col>
+
         </ion-row>
         <ion-row *ngIf="lugares?.length > 0">
             <ion-col no-padding col-6 col-md-3 col-lg-4 col-xl-3 *ngFor="let lugar of (lugares | filter: search:categoriaSel?.nombre)">

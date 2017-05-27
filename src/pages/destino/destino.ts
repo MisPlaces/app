@@ -1,3 +1,4 @@
+import { AgenteDeViajePage } from './../agente-de-viaje/agente-de-viaje';
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
@@ -35,7 +36,7 @@ export class DestinoPage {
       let mapId = 'mapa-destino-id';
       let zoom = 15;
 
-      this.contenedorMapa.nativeElement.innerHTML = '<div class="angular-leaflet-map" style="height:100%;" id="' + mapId + '"></div>';
+      this.contenedorMapa.nativeElement.innerHTML = '<div class="angular-leaflet-map" style="height:60%;" id="' + mapId + '"></div>';
 
       this.map = this.mapService.createMap(mapId, resp.coords.latitude, resp.coords.longitude);
       let latlng = [];
@@ -71,6 +72,10 @@ export class DestinoPage {
         console.log(error);
         this.dismissLoading();
       });
+  }
+
+  goToAgenteDeViaje() {
+    this.navCtrl.push(AgenteDeViajePage);
   }
 
   presentLoading() {
