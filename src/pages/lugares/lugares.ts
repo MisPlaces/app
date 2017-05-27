@@ -93,11 +93,14 @@ export class LugaresPage {
             console.log(l.id);
             if (id == l.id) {
                 this.presentToast('Lugar encontrado!');
-                //this.presentAtraccionModal(atraccion);
-            } else {
-                this.presentToast('Lugar mo encontrado!');
+                this.navCtrl.push(LugarPage, {
+                    lugar: l
+                });
+                return;
             }
         }
+
+        this.presentToast('Lugar no encontrado!');
     }
 
     scan() {
@@ -140,7 +143,7 @@ export class LugaresPage {
         this.dismissLoading();
     }
 
- 	rutaGmap() {
+    rutaGmap() {
         this.presentLoading();
         this.geolocation.getCurrentPosition().then((resp) => {
             let ways = [];
