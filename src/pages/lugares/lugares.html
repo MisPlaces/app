@@ -2,20 +2,22 @@
     <ion-navbar>
         <ion-searchbar [(ngModel)]="search" placeholder="Buscar lugares"></ion-searchbar>
     </ion-navbar>
-    <ion-row >
+
+    <ion-row>
         <div class="scroll-hidden-x-container">
             <div class="scroll-hidden-x-inner">
                 <ion-row nowrap>
                     <div *ngFor="let categoria of categorias; let i=index" class="div-categorias-btn">
-                    <button class="btn-categorias" *ngIf="!categoriaSel" (click)="categoriaSel = categoria" ion-button icon-only large color="light" round>
+                        <button class="btn-categorias" *ngIf="!categoriaSel" (click)="categoriaSel = categoria" ion-button icon-only large color="light"
+                            round>
                         <ion-icon [name]="categoria.icono?categoria.icono:'home'"></ion-icon>
                     </button>
-                        <button  class="btn-categorias"  *ngIf="categoriaSel && categoria.id != categoriaSel.id" (click)="categoriaSel = categoria" ion-button icon-only
-                            large color="light" round >
+                        <button class="btn-categorias" *ngIf="categoriaSel && categoria.id != categoriaSel.id" (click)="categoriaSel = categoria"
+                            ion-button icon-only large color="light" round>
                         <ion-icon [name]="categoria.icono?categoria.icono:'home'"></ion-icon>
                     </button>
-                        <button *ngIf="categoriaSel && categoria.id == categoriaSel.id" (click)="categoriaSel = categoria" ion-button icon-only
-                            large color="default" round>
+                        <button *ngIf="categoriaSel && categoria.id == categoriaSel.id" (click)="categoriaSel = categoria" ion-button icon-only large
+                            color="default" round>
                         <ion-icon [name]="categoria.icono?categoria.icono:'home'"></ion-icon>
                     </button>
                     </div>
@@ -23,15 +25,19 @@
             </div>
         </div>
     </ion-row>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Tire para recargar" refreshingSpinner="circles" refreshingText="Recargando...">
+        </ion-refresher-content>
+    </ion-refresher>
 
-    
+
     <ion-grid no-padding>
-        <ion-row *ngIf="categoriaSel" >
+        <ion-row *ngIf="categoriaSel">
             <ion-title text-center>
                 <h1>{{categoriaSel?.nombre}}</h1>
             </ion-title>
         </ion-row>
-        <ion-row *ngIf="lugares?.length > 0" >
+        <ion-row *ngIf="lugares?.length > 0">
             <ion-col no-padding col-6 col-md-3 col-lg-4 col-xl-3 *ngFor="let lugar of (lugares | filter: search:categoriaSel?.nombre)">
                 <ion-card (click)="itemSelected(lugar)" tappable>
 
@@ -46,13 +52,13 @@
                 </ion-card>
             </ion-col>
         </ion-row>
-         <ion-row *ngIf="(lugares | filter: search:categoriaSel?.nombre) == 0" >
-             <ion-col text-center>
-                 <h3>
-                     No se han encontrado lugares
-                 </h3>
-             </ion-col>
-         </ion-row>
+        <ion-row *ngIf="(lugares | filter: search:categoriaSel?.nombre) == 0">
+            <ion-col text-center>
+                <h3>
+                    No se han encontrado lugares
+                </h3>
+            </ion-col>
+        </ion-row>
     </ion-grid>
     <ion-fab right bottom>
         <button (click)="scan()" ion-fab color="primary">

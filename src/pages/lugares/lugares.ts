@@ -25,7 +25,12 @@ export class LugaresPage {
         private barcodeScanner: BarcodeScanner,
         public loadingCtrl: LoadingController) {
 
+        this.init();
 
+
+    }
+
+    init(refresher?) {
         let resource = 'lugares';
         this.presentLoading();
         this.apiProvider.getAll('categorias')
@@ -33,6 +38,28 @@ export class LugaresPage {
             (data) => {
                 console.log(data);
                 this.categorias = data;
+                this.apiProvider.getAll(resource)
+                    .then(
+                    (data) => {
+                        console.log(data);
+                        this.lugares = data;
+                        if (typeof refresher !== "undefined"){
+                           refresher.complete(); 
+                        }
+                        this.dismissLoading();
+                    },
+                    err => {
+                        if (err.status == 401) {
+                            this.presentToast('Sesión expirada');
+                            this.events.publish('user:logout');
+                        }
+                        if (err.status == 404) {
+                            this.presentToast(JSON.parse(err._body).message)
+                            this.navCtrl.pop();
+                        }
+                        this.dismissLoading();
+                    }
+                    );
             },
             err => {
                 if (err.status == 401) {
@@ -46,25 +73,7 @@ export class LugaresPage {
                 this.dismissLoading();
             }
             );
-        this.apiProvider.getAll(resource)
-            .then(
-            (data) => {
-                console.log(data);
-                this.lugares = data;
-                this.dismissLoading();
-            },
-            err => {
-                if (err.status == 401) {
-                    this.presentToast('Sesión expirada');
-                    this.events.publish('user:logout');
-                }
-                if (err.status == 404) {
-                    this.presentToast(JSON.parse(err._body).message)
-                    this.navCtrl.pop();
-                }
-                this.dismissLoading();
-            }
-            );
+
     }
 
     presentLoading() {
@@ -77,10 +86,10 @@ export class LugaresPage {
     dismissLoading() {
 
         console.log(this.loader);
-        if (this.loader){
-             this.loader.dismiss();
+        if (this.loader) {
+            this.loader.dismiss();
         }
-       
+
     }
 
     itemSelected(item) {
@@ -124,6 +133,12 @@ export class LugaresPage {
                 }
             }
             );
+    }
+
+    doRefresh(refresher) {
+        console.info('Begin async operation');
+        this.init(refresher.complete());
+
     }
 
     abrirMapa() {
