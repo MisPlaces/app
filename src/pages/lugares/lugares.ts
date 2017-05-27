@@ -43,35 +43,15 @@ export class LugaresPage {
                     (data) => {
                         console.log(data);
                         this.lugares = data;
-                        if (typeof refresher !== "undefined"){
-                           refresher.complete(); 
+                        if (typeof refresher !== "undefined") {
+                            refresher.complete();
                         }
                         this.dismissLoading();
                     },
-                    err => {
-                        if (err.status == 401) {
-                            this.presentToast('Sesión expirada');
-                            this.events.publish('user:logout');
-                        }
-                        if (err.status == 404) {
-                            this.presentToast(JSON.parse(err._body).message)
-                            this.navCtrl.pop();
-                        }
-                        this.dismissLoading();
-                    }
+                    err => this.handleError.bind(this)
                     );
             },
-            err => {
-                if (err.status == 401) {
-                    this.presentToast('Sesión expirada');
-                    this.events.publish('user:logout');
-                }
-                if (err.status == 404) {
-                    this.presentToast(JSON.parse(err._body).message)
-                    this.navCtrl.pop();
-                }
-                this.dismissLoading();
-            }
+            err => this.handleError.bind(this)
             );
 
     }
@@ -145,6 +125,18 @@ export class LugaresPage {
         this.navCtrl.push(LugaresMapaPage, {
             lugares: this.lugares
         });
+    }
+
+    handleError(err) {
+        if (err.status == 401) {
+            this.presentToast('Sesión expirada');
+            this.events.publish('user:logout');
+        }
+        if (err.status == 404) {
+            this.presentToast(JSON.parse(err._body).message)
+            this.navCtrl.pop();
+        }
+        this.dismissLoading();
     }
 
 

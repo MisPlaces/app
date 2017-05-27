@@ -58,7 +58,7 @@ export class MyApp {
   }
 
   lugar(){
-    this.nav.push(LugarPage);
+    // this.nav.push(LugarPage);
   }
 }
 
