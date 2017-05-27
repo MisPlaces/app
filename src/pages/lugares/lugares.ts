@@ -1,3 +1,4 @@
+import { LugarPage } from './../lugar/lugar';
 import { LugaresMapaPage } from './../lugares-mapa/lugares-mapa';
 import { ApiProvider } from './../../providers/api/api';
 import { Component } from '@angular/core';
@@ -78,9 +79,9 @@ export class LugaresPage {
     }
 
     itemSelected(item) {
-        // this.navCtrl.push(DetalleTracking, {
-        //   'numero_solicitud': item.numeroSolicitud
-        // });
+        this.navCtrl.push(LugarPage, {
+            'lugar': item
+        });
     }
 
     presentToast(msg) {

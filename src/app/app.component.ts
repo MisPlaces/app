@@ -1,3 +1,4 @@
+import { LugarPage } from './../pages/lugar/lugar';
 import { AuthProvider } from './../providers/auth/auth';
 import { Login } from './../pages/login/login';
 import { Component, ViewChild } from '@angular/core';
@@ -54,6 +55,10 @@ export class MyApp {
 
     this.events.publish('user:logout');
 
+  }
+
+  lugar(){
+    this.nav.push(LugarPage);
   }
 }
 

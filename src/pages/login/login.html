@@ -1,29 +1,22 @@
-<ion-content padding>
+<ion-content padding id="login-screen">
     <ion-row class="logo-row">
         <ion-col></ion-col>
         <ion-col width-80>
-            <img class="img-responsive m-logo" src="assets/img/favicon.ico">
+            <img class="img-responsive m-logo" src="assets/icon/logo.png">
         </ion-col>
         <ion-col></ion-col>
-    </ion-row>
-    <ion-row>
-        <ion-col>
-            <div class="subtitulo">
-                <h2>MisPlaces</h2>
-            </div>
-        </ion-col>
-    </ion-row>
+    </ion-row>    
     <ion-row>
         <ion-col>
             <form [formGroup]="loginForm" (ngSubmit)="iniciarSesion()" class="login-form">
                 <ion-list>
                     <ion-item>
-                        <ion-label floating>Nombre de Usuario</ion-label>
+                        <ion-label>Nombre de Usuario</ion-label>
                         <ion-input type="text" formControlName="usuario"></ion-input>
                     </ion-item>
 
                     <ion-item>
-                        <ion-label floating>Contraseña</ion-label>
+                        <ion-label>Contraseña</ion-label>
                         <ion-input type="password" formControlName="password"></ion-input>
                     </ion-item>
 
@@ -33,6 +26,11 @@
                     <button ion-button color="primary" block type="submit" [disabled]="!loginForm.valid">Ingresar</button>
                 </div>
             </form>
+        </ion-col>
+    </ion-row>
+    <ion-row text-center>
+        <ion-col>
+            Ó
         </ion-col>
     </ion-row>
     <ion-row>
@@ -47,6 +45,11 @@
             <button (click)="iniciarSesion()" ion-button block icon-left color="google">
                     <ion-icon name="logo-google"></ion-icon> Google
                 </button>
+        </ion-col>
+    </ion-row>
+    <ion-row text-center>
+        <ion-col>
+            <a>Registrar</a>
         </ion-col>
     </ion-row>
 </ion-content>
