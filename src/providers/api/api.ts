@@ -27,8 +27,8 @@ export class ApiProvider {
         this.apiUrl = _config.get('apiUrl');
         this.requestUri = _config.get('apiUrl') + _config.get('apiPath');
 
-        this.headers = new Headers({'Content-Type': 'application/json'});
-        this.headers.append('Authorization', 'Bearer ' + this.authService.access_token);
+        // this.headers = new Headers({'Content-Type': 'application/json'});
+        // this.headers.append('Authorization', 'Bearer ' + this.authService.access_token);
 
         this.opt = {
             headers: this.headers
