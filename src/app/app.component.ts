@@ -1,3 +1,4 @@
+import { SeleccionarModoPage } from './../pages/seleccionar-modo/seleccionar-modo';
 import { PreguntasPage } from './../pages/preguntas/preguntas';
 import { LugarPage } from './../pages/lugar/lugar';
 import { AuthProvider } from './../providers/auth/auth';
@@ -13,7 +14,7 @@ import {LugaresPage} from "../pages/lugares/lugares";
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: any = PreguntasPage;
+  rootPage: any = SeleccionarModoPage;
   @ViewChild(Nav) nav: Nav;
 
   constructor(platform: Platform,
@@ -49,6 +50,10 @@ export class MyApp {
       this.menuCtrl.enable(true, 'menu');
       this.menuCtrl.swipeEnable(true, 'menu');
     });
+  }
+
+  seleccionarModo(){
+    this.nav.setRoot(SeleccionarModoPage);
   }
 
 
