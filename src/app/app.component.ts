@@ -1,6 +1,5 @@
 import { SeleccionarModoPage } from './../pages/seleccionar-modo/seleccionar-modo';
-import { PreguntasPage } from './../pages/preguntas/preguntas';
-import { LugarPage } from './../pages/lugar/lugar';
+
 import { AuthProvider } from './../providers/auth/auth';
 import { Login } from './../pages/login/login';
 import { Component, ViewChild } from '@angular/core';

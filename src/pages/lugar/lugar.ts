@@ -1,5 +1,6 @@
 import { ApiProvider } from './../../providers/api/api';
 import { Component } from '@angular/core';
+import { Geolocation } from '@ionic-native/geolocation';
 import { IonicPage, NavController, NavParams, ToastController, Events, LoadingController } from 'ionic-angular';
 
 /**
@@ -27,6 +28,7 @@ export class LugarPage {
     public apiProvider: ApiProvider,
     private toastCtrl: ToastController,
     public events: Events,
+    private geolocation: Geolocation,
     public loadingCtrl: LoadingController) {
 
     this.lugar = this.navParams.get('lugar');
@@ -94,9 +96,6 @@ export class LugarPage {
 
   }
 
-  comoLlegar() {
-
-  }
 
   meGusta() {
     this.lugar.cuenta_me_gusta += 1;
@@ -125,6 +124,31 @@ export class LugarPage {
       duration: 3000
     });
     toast.present();
+  }
+
+  comoLlegar() {
+    this.presentLoading();
+    this.geolocation.getCurrentPosition().then((resp) => {
+      let ways = [];
+
+      ways.push(resp.coords.latitude + ", " + resp.coords.longitude);
+
+      ways.push(this.lugar.latitud + ", " + this.lugar.longitud);
+
+      let url = "https://www.google.com/maps/dir/" + ways.join('/');;
+
+      this.loader.dismissAll();
+
+      window.open(url, "_system");
+    }).catch((error) => {
+
+      this.loader.dismissAll();
+      console.log('Error getting location', error);
+      console.log(error);
+
+
+    });
+
   }
 
 }
