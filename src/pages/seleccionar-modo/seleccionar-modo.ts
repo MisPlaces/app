@@ -1,3 +1,4 @@
+import { EligeUnDestinoPage } from './../elige-un-destino/elige-un-destino';
 import { LugaresPage } from './../lugares/lugares';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -23,7 +24,7 @@ export class SeleccionarModoPage {
   }
 
   modoAgente() {
-    // this.navCtrl.setRoot();
+    this.navCtrl.setRoot(EligeUnDestinoPage);
   }
 
   modoIndependiente() {

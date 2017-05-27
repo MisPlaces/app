@@ -1,3 +1,11 @@
+import { SalidaNocturnaPageModule } from './../pages/salida-nocturna/salida-nocturna.module';
+import { RestaurantesPageModule } from './../pages/restaurantes/restaurantes.module';
+import { MenuPageModule } from './../pages/menu/menu.module';
+import { LugaresChoiceModule } from './../pages/lugares-choice/lugares-choice.module';
+import { EligeUnDestinoPageModule } from './../pages/elige-un-destino/elige-un-destino.module';
+import { CheckoutPageModule } from './../pages/checkout/checkout.module';
+import { AgenteDeViajePageModule } from './../pages/agente-de-viaje/agente-de-viaje.module';
+import { ActividadesPageModule } from './../pages/actividades/checkout.module';
 import { SeleccionarModoPageModule } from './../pages/seleccionar-modo/seleccionar-modo.module';
 import { PreguntasPageModule } from './../pages/preguntas/preguntas.module';
 import { GeocodingService } from './../directives/map/geocode.service';
@@ -36,6 +44,15 @@ import { HomePage } from '../pages/home/home';
     LugaresMapaPageModule,
     PreguntasPageModule,
     SeleccionarModoPageModule,
+    // lo de los pibes
+    ActividadesPageModule,
+    AgenteDeViajePageModule,
+    CheckoutPageModule,
+    EligeUnDestinoPageModule,
+    LugaresChoiceModule,
+    MenuPageModule,
+    RestaurantesPageModule,
+    SalidaNocturnaPageModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot({
       name: '__misplaces',

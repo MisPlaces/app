@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Agente de viaje
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page1">
+  <form id="agenteDeViaje-form1">
+    <div id="agenteDeViaje-markdown1" class="show-list-numbers-and-dots">
+      <p style="color:#000000;">
+        Juan, desde que fecha comenzamos a preparar tu viaje?
+      </p>
+    </div>
+    <ion-item id="agenteDeViaje-input2">
+      <ion-label>
+        Desde
+      </ion-label>
+      <ion-datetime displayFormat="DD MMM YYYY"></ion-datetime>
+    </ion-item>
+    <ion-item id="agenteDeViaje-input3">
+      <ion-label>
+        Hasta
+      </ion-label>
+      <ion-datetime displayFormat="DD MMM YYYY"></ion-datetime>
+    </ion-item>
+  </form>
+  <button id="agenteDeViaje-button2" ion-button color="positive" block on-click="goToLugares()">
+    Elijamos un alojamiento
+  </button>
+</ion-content>
