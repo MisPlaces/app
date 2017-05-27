@@ -1,3 +1,4 @@
+import { PreguntasPageModule } from './../pages/preguntas/preguntas.module';
 import { GeocodingService } from './../directives/map/geocode.service';
 import { Geolocation } from '@ionic-native/geolocation';
 import { MapService } from './../directives/map/map.service';
@@ -32,6 +33,7 @@ import { HomePage } from '../pages/home/home';
     LugaresPageModule,
     LugarPageModule,
     LugaresMapaPageModule,
+    PreguntasPageModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot({
       name: '__misplaces',

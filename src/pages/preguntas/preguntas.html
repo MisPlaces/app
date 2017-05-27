@@ -1,0 +1,42 @@
+<ion-content padding>
+  <ion-slides class="my-slides" #sliders initialSlide="0" (ionSlideDrag)="onSlideMove($event)">
+
+    <ion-slide padding>
+      <h2>
+        ¿Qué tipos de comidas te gusta?
+      </h2>
+
+      <ion-list radio-group [(ngModel)]="comida" (ionChange)="changeSlide()">
+
+
+        <ion-item>
+          <ion-label>Típicas</ion-label>
+          <ion-radio value="tipicas"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Gourmet</ion-label>
+          <ion-radio value="gourmet"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Orientales</ion-label>
+          <ion-radio value="orientales"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Minutas</ion-label>
+          <ion-radio value="minutas"></ion-radio>
+        </ion-item>
+      </ion-list>
+
+    </ion-slide>
+
+    <ion-slide padding>
+
+    </ion-slide>
+
+    <ion-slide padding>
+      <h1>Slide 3</h1>
+
+    </ion-slide>
+
+  </ion-slides>
+</ion-content>

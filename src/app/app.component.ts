@@ -1,3 +1,4 @@
+import { PreguntasPage } from './../pages/preguntas/preguntas';
 import { LugarPage } from './../pages/lugar/lugar';
 import { AuthProvider } from './../providers/auth/auth';
 import { Login } from './../pages/login/login';
@@ -12,7 +13,7 @@ import {LugaresPage} from "../pages/lugares/lugares";
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: any = LugaresPage;
+  rootPage: any = PreguntasPage;
   @ViewChild(Nav) nav: Nav;
 
   constructor(platform: Platform,

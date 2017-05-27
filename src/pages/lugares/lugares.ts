@@ -3,6 +3,7 @@ import { LugaresMapaPage } from './../lugares-mapa/lugares-mapa';
 import { ApiProvider } from './../../providers/api/api';
 import { Component } from '@angular/core';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { Geolocation } from '@ionic-native/geolocation';
 import { NavController, NavParams, ToastController, Events, LoadingController } from 'ionic-angular';
 
 @Component({
@@ -23,6 +24,7 @@ export class LugaresPage {
         private toastCtrl: ToastController,
         public events: Events,
         private barcodeScanner: BarcodeScanner,
+        private geolocation: Geolocation,
         public loadingCtrl: LoadingController) {
 
         this.init();
@@ -116,7 +118,6 @@ export class LugaresPage {
     }
 
     doRefresh(refresher) {
-        console.info('Begin async operation');
         this.init(refresher.complete());
 
     }
@@ -137,6 +138,34 @@ export class LugaresPage {
             this.navCtrl.pop();
         }
         this.dismissLoading();
+    }
+
+ 	rutaGmap() {
+        this.presentLoading();
+        this.geolocation.getCurrentPosition().then((resp) => {
+            let ways = [];
+
+            ways.push(resp.coords.latitude + ", " + resp.coords.longitude);
+            for (let l of this.lugares) {
+
+                ways.push(l.latitud + ", " + l.longitud);
+            }
+
+            let url = "https://www.google.com/maps/dir/" + ways.join('/');;
+
+            this.loader.dismissAll();
+
+            window.open(url, "_system");
+        }).catch((error) => {
+
+            this.loader.dismissAll();
+            console.log('Error getting location', error);
+            console.log(error);
+
+
+        });
+
+
     }
 
 

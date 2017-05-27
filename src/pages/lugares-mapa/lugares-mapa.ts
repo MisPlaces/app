@@ -1,11 +1,11 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { LoadingController, NavController, NavParams, Select } from 'ionic-angular';
+import { LoadingController, NavController, NavParams, Select, IonicPage } from 'ionic-angular';
 import { MapService } from '../../directives/map/map.service';
 import { GeocodingService } from "../../directives/map/geocode.service";
 import { Geolocation } from '@ionic-native/geolocation';
 
 
-
+@IonicPage()
 @Component({
   selector: 'page-lugares-mapa',
   templateUrl: 'lugares-mapa.html',
