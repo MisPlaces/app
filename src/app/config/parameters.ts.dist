@@ -1,0 +1,7 @@
+export const parameters: Object =
+{
+    apiUrl: "http://localhost/bp_api/public",
+    apiPath: "/api",
+    client_id: '1',
+    client_secret: 'DOacpI0Cxy0zPvCBJZhn01yJNnJMMAqHuPsplzfq'
+}
