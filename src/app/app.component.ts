@@ -6,11 +6,12 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
+import {LugaresPage} from "../pages/lugares/lugares";
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: any = Login;
+  rootPage: any = LugaresPage;
   @ViewChild(Nav) nav: Nav;
 
   constructor(platform: Platform,

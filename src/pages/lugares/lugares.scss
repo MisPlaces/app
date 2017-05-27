@@ -1,0 +1,96 @@
+page-lugares {
+    ion-card {
+        margin: 5px !important;
+        width: calc(100% - 8px) !important;
+    }
+    img {
+        min-height: 120px;
+        height: auto;
+    }
+    ion-item {
+        padding-left: 3px !important;
+    }
+    .item-inner {
+        margin-left: 5px !important;
+    }
+    ion-icon {
+        margin-right: 5px !important;
+    }
+    .searchbar-md .searchbar-input {
+        box-shadow: none;
+    } 
+    
+    //Categorias
+ 
+    .btn-categorias {
+        border: 1px solid grey !important;
+        background-color: white !important;
+    }
+    .white-space-nowrap {
+        white-space: nowrap;
+    }
+     ::-webkit-scrollbar {
+        width: 0px;
+        /* for vertical scrollbars */
+        height: 0px;
+        /* for horizontal scrollbars */
+    }
+     ::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.1);
+    }
+     ::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.5);
+    }
+    /* ----------- Galaxy Tab 10.1 ----------- */
+    /* Portrait and Landscape */
+    @media(min-device-width: 800px) and (max-device-width: 1280px) {}
+    /* Portrait */
+    @media(max-device-width: 800px) and (orientation: portrait) {
+        .scroll-hidden-x-container {
+            position: relative; //height: 100%;
+            overflow-x: hidden;
+            margin: 0px auto;
+            width: 100%;
+        }
+        .div-categorias-btn {
+            margin-left: 3%;
+            button {
+                min-height: 70px;
+            }
+        }
+    }
+    .div-categorias-btn {
+            margin-left: 3%;
+            button {
+                min-height: 70px;
+            }
+        }
+    /* Landscape */
+    @media(max-device-width: 1280px) and (orientation: landscape) {}
+    .scroll-hidden-x-container {
+        position: relative; //height: 100%;
+        overflow-x: hidden;
+        margin: 0px auto;
+    }
+    .scroll-hidden-x-inner {
+        width: 100%;
+        overflow-x: auto;
+        height: 100%;
+    }
+    .square {
+        padding: 1em;
+        float: left;
+        width: 31.33%;
+        margin-right: 3%;
+    }
+    .square:last-child {
+        margin-right: 0;
+    }
+    .square:before {
+        content: "";
+        display: block;
+        padding-top: 100%;
+        float: left;
+        /*Flotando el elemento podemos usar el cuadrado como cualquier otra capa y podremos meter contenido. Pero dejará de ser responsive cuando el contenido sea mayor que su alto*/
+    }
+}

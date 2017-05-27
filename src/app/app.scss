@@ -14,3 +14,19 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.angular-leaflet-map {
+  height: 100%;
+}
+
+.leaflet-bottom.leaflet-right {
+  display: none;
+}
+
+.g-maps {
+  color: color($colors, danger) !important;
+}
+
+.leaflet {
+  color: color($colors, secondary) !important;
+}
