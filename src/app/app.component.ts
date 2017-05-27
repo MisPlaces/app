@@ -1,3 +1,4 @@
+import { DestinoPage } from './../pages/destino/destino';
 import { SeleccionarModoPage } from './../pages/seleccionar-modo/seleccionar-modo';
 
 import { AuthProvider } from './../providers/auth/auth';
@@ -13,7 +14,7 @@ import {LugaresPage} from "../pages/lugares/lugares";
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: any = SeleccionarModoPage;
+  rootPage: any = DestinoPage;
   @ViewChild(Nav) nav: Nav;
 
   constructor(platform: Platform,

@@ -51,11 +51,14 @@ export class MapService {
 
     addMarker(newBounds: any, text) {
 
-        let maker = L.marker(newBounds, {icon:this.createIcon('https://cdn2.iconfinder.com/data/icons/fruits-and-vegetables/100/_banana-128.png')}).addTo(this.map);
+        // let maker = L.marker(newBounds, {icon:this.createIcon('https://cdn2.iconfinder.com/data/icons/fruits-and-vegetables/100/_banana-128.png')}).addTo(this.map);
+        let maker = L.marker(newBounds).addTo(this.map);
 
         if (text) {
             maker.bindPopup(text);
         }
+
+        return maker;
     }
 
     createIcon(img) {

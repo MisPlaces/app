@@ -6,6 +6,8 @@ import { EligeUnDestinoPageModule } from './../pages/elige-un-destino/elige-un-d
 import { CheckoutPageModule } from './../pages/checkout/checkout.module';
 import { AgenteDeViajePageModule } from './../pages/agente-de-viaje/agente-de-viaje.module';
 import { ActividadesPageModule } from './../pages/actividades/checkout.module';
+import { NativeGeocoder } from '@ionic-native/native-geocoder';
+import { DestinoPageModule } from './../pages/destino/destino.module';
 import { SeleccionarModoPageModule } from './../pages/seleccionar-modo/seleccionar-modo.module';
 import { PreguntasPageModule } from './../pages/preguntas/preguntas.module';
 import { GeocodingService } from './../directives/map/geocode.service';
@@ -54,6 +56,7 @@ import { HomePage } from '../pages/home/home';
     RestaurantesPageModule,
     SalidaNocturnaPageModule,
     IonicModule.forRoot(MyApp),
+    DestinoPageModule,
     IonicStorageModule.forRoot({
       name: '__misplaces',
       driverOrder: ['indexeddb', 'sqlite', 'websql']
@@ -74,7 +77,8 @@ import { HomePage } from '../pages/home/home';
     BarcodeScanner,
     Geolocation,
     MapService,
-    GeocodingService
+    GeocodingService,
+    NativeGeocoder
   ]
 })
 export class AppModule { }
