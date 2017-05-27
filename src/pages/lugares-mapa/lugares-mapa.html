@@ -1,15 +1,15 @@
 <ion-header>
     <ion-navbar>
-        <ion-title no-padding>Atracciones a {{(kms.km > 0? 'menos de' :'más de' ) }} {{kms.km > 0? kms.km :'300' }} km
+        <ion-title no-padding>Lugares a {{(kms.km > 0? 'menos de' :'más de' ) }} {{kms.km > 0? kms.km :'300' }} km
         </ion-title>
         <ion-item [hidden]="true">
             <ion-label>{{'distancia' }}</ion-label>
             <ion-select (ionChange)="rangeChange()" [cancelText]="('cancelar' )"
-                        [okText]="('ok' )" #searchKm center
+                        [okText]="('OK' )" #searchKm center
                         [(ngModel)]="kms">
                 <ion-option *ngFor="let k of distancias"
                             [value]="k">
-                    {{ (k.km > 0? 'menos de' :'más de')  }} {{k.km > 0? k.km :'300' }} kms.km
+                    {{ k.descripcion }} 
                 </ion-option>
             </ion-select>
         </ion-item>
@@ -20,6 +20,6 @@
         </ion-buttons>
     </ion-navbar>
 </ion-header>
-<ion-content noscroll>
+<ion-content>
     <div #contenedorMapaLugares class="angular-leaflet-map"></div>
 </ion-content>

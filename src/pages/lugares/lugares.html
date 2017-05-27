@@ -25,7 +25,7 @@
     </ion-row>
 
     
-    <ion-grid padding>
+    <ion-grid no-padding>
         <ion-row *ngIf="categoriaSel" >
             <ion-title text-center>
                 <h1>{{categoriaSel?.nombre}}</h1>
@@ -41,7 +41,7 @@
                         <p>{{lugar.resumen}}</p>
                     </ion-item>
 
-                    <img class="altura-lista" [src]="lugar.foto?lugar.foto:''">
+                    <img class="altura-lista" [src]="lugar.imagen_url?lugar.imagen_url:''">
 
                 </ion-card>
             </ion-col>

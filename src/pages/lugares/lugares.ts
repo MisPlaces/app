@@ -75,7 +75,12 @@ export class LugaresPage {
     }
 
     dismissLoading() {
-        this.loader.dismiss();
+
+        console.log(this.loader);
+        if (this.loader){
+             this.loader.dismiss();
+        }
+       
     }
 
     itemSelected(item) {

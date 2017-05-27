@@ -17,9 +17,10 @@ export class LugarPage {
   comentarios: Array<any>;
   imagenes: Array<any>;
   comentario: any;
+  lugar: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-
+    this.lugar = this.navParams.get('lugar');
     this.comentarios = [
       { "nombre": "sergio", "apellido": "sanabria", "texto": "hola", "avatar": "https://pbs.twimg.com/profile_images/732548853879070720/zFzX7xd4_bigger.jpg" },
       { "nombre": "sergio", "apellido": "sanabria", "texto": "comenten", "avatar": "https://pbs.twimg.com/profile_images/732548853879070720/zFzX7xd4_bigger.jpg" },

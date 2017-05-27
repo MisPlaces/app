@@ -142,7 +142,7 @@ export class LugaresMapaPage {
       let kms = this.mapService.getDistanceFromLatLonInKm(latD, lonD, lat, lng);
 
       if (this.kms.km > 0 && kms > this.kms.km) {
-        return;
+        continue;
       }
 
 
@@ -163,7 +163,7 @@ export class LugaresMapaPage {
       // this.domAdapter.on(newDiv, 'click', this.open.bind(this, e));
       // this.domAdapter.appendChild(this.elementRef.nativeElement, newDiv);
 
-      this.mapService.addMarker(latlng, newDiv);
+      this.mapService.addMarker(latlng, e.nombre.toUpperCase());
 
       //this.mapService.addText(e.nombre);
 

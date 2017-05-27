@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 //import {Map, TileLayer} from 'leaflet';
 
 let L = require('leaflet');
 
-import {ReplaySubject} from 'rxjs/ReplaySubject';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
 
 @Injectable()
 export class MapService {
@@ -35,7 +35,7 @@ export class MapService {
             maxZoom: 18,
             layers: [this.baseMaps.MapBox]
         });
-        L.control.zoom({position: 'topright'}).addTo(this.map);
+        L.control.zoom({ position: 'topright' }).addTo(this.map);
         // L.control.layers(this.baseMaps).addTo(this.map);
         return this.map;
     };
@@ -51,11 +51,21 @@ export class MapService {
 
     addMarker(newBounds: any, text) {
 
-        let maker = L.marker(newBounds).addTo(this.map);
+        let maker = L.marker(newBounds, {icon:this.createIcon('https://cdn2.iconfinder.com/data/icons/fruits-and-vegetables/100/_banana-128.png')}).addTo(this.map);
 
         if (text) {
             maker.bindPopup(text);
         }
+    }
+
+    createIcon(img) {
+        let icon = L.icon({
+            iconUrl: img,
+
+            iconSize: [38, 38]
+        });
+
+        return icon
     }
 
     setPosition(lat, lng) {
@@ -144,7 +154,7 @@ export class MapService {
             Math.sin(dLat / 2) * Math.sin(dLat / 2) +
             Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) *
             Math.sin(dLon / 2) * Math.sin(dLon / 2)
-        ;
+            ;
         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         var d = R * c; // Distance in km
 

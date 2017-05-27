@@ -7,7 +7,7 @@
 <ion-header  no-border>
 
   <ion-navbar>
-    <!--<ion-title>Lugar</ion-title>-->
+    <ion-title>{{lugar.nombre}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -17,8 +17,10 @@
 
 
   <ion-card class="adv-map">
+
+    
     <div style="position: relative">
-      <img src="assets/img/tabay-portada.png">
+      <img [src]="lugar?.imagen_url?lugar.imagen_url:''">
       <!--<img src="http://placehold.it/1920x800/007FFF">-->
       <ion-fab right bottom edge>
         <button ion-fab class="fab-map" color="danger">
@@ -30,7 +32,7 @@
       <ion-avatar item-start>
         <img src="https://placehold.it/150?text=ST">
       </ion-avatar>
-      <span>nombre empresa</span>
+      <span>{{lugar.nombre}}</span>
     </ion-item>
     <ion-item>
       <ion-icon color="subtle" large item-start name='beer'></ion-icon>
