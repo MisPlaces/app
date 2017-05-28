@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {Http, Headers, RequestOptions, RequestOptionsArgs, URLSearchParams, Response} from '@angular/http';
+import { Injectable } from '@angular/core';
+import { Http, Headers, RequestOptions, RequestOptionsArgs, URLSearchParams, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
-import {AuthProvider} from "../auth/auth";
-import {Config} from "../../app/config/config";
+import { AuthProvider } from "../auth/auth";
+import { Config } from "../../app/config/config";
 
 /*
  Generated class for the ApiProvider provider.
@@ -20,8 +20,8 @@ export class ApiProvider {
     opt: RequestOptionsArgs;
 
     constructor(public http: Http,
-                public authService: AuthProvider,
-                public _config: Config) {
+        public authService: AuthProvider,
+        public _config: Config) {
         console.log('Hello ApiProvider Provider');
 
         this.apiUrl = _config.get('apiUrl');
@@ -40,6 +40,17 @@ export class ApiProvider {
     get(resource: string, id: number): Promise<any> {
 
         return this.http.get(this.requestUri + "/" + resource + "/" + id, this.options)
+            .toPromise()
+            .then(this.extractData)
+            .catch(this.handleError);
+    }
+
+    getPlacesMapBox(text): Promise<any> {
+
+        let url = "https://api.mapbox.com/geocoding/v5/mapbox.places/";
+        let token = ".json?country=ar&access_token=pk.eyJ1Ijoic2VyZ2lvc2FuYWJyaWEiLCJhIjoiY2oyMXVrOGZvMDAwMjMycGNrODltb2J3ciJ9.VMWOMgix8djMTesRJMDHVg";
+        return this.http.get(url + text + token, this.options)
+            .debounceTime(700)
             .toPromise()
             .then(this.extractData)
             .catch(this.handleError);
@@ -76,13 +87,13 @@ export class ApiProvider {
             (resolve, reject) => {
                 this.http.post(this.requestUri + '/' + resource, params, this.options)
                     .subscribe(
-                        res => {
-                            resolve(res.json());
-                        },
-                        (err) => {
-                            reject(err);
-                            console.error('err', err)
-                        }
+                    res => {
+                        resolve(res.json());
+                    },
+                    (err) => {
+                        reject(err);
+                        console.error('err', err)
+                    }
                     );
 
             });
@@ -94,13 +105,13 @@ export class ApiProvider {
             (resolve, reject) => {
                 return this.http.put(this.requestUri + "/" + resource + "/" + id, params, this.options)
                     .subscribe(
-                        res => {
-                            resolve(res.json());
-                        },
-                        (err) => {
-                            reject(err);
-                            console.error('err', err)
-                        }
+                    res => {
+                        resolve(res.json());
+                    },
+                    (err) => {
+                        reject(err);
+                        console.error('err', err)
+                    }
                     );
 
             });
@@ -112,13 +123,13 @@ export class ApiProvider {
             (resolve, reject) => {
                 return this.http.patch(this.requestUri + "/" + resource + "/" + id, params, this.options)
                     .subscribe(
-                        res => {
-                            resolve(res.json());
-                        },
-                        (err) => {
-                            reject(err);
-                            console.error('err', err)
-                        }
+                    res => {
+                        resolve(res.json());
+                    },
+                    (err) => {
+                        reject(err);
+                        console.error('err', err)
+                    }
                     );
             });
     }

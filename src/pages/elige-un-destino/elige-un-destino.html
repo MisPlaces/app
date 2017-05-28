@@ -5,12 +5,21 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding id="page3">
-  <div class="spacer" style="height:100px;" id="eligeUnDestino-spacer1"></div>
-  <form id="eligeUnDestino-form2">
-    <ion-searchbar placeholder="Elige un destino" name="" id="eligeUnDestino-search1"></ion-searchbar>
-  </form>
-  <button id="eligeUnDestino-button3" ion-button color="positive" block on-click="goToAgenteDeViaje()">
-    Comenzar
-  </button>
+<ion-content no-padding>
+  <ion-searchbar placeholder="Elige un destino" [(ngModel)]="lugar" debouce='1000' (ionInput)="buscarLugar()"></ion-searchbar>
+
+  <ion-list>
+    <ion-item (click)="goToAgenteDeViaje(l)" *ngFor="let l of lugares">
+      <h2>{{l.text}}</h2>
+      <h3>{{l.place_name}}</h3>
+      <p>{{l.properties.category | uppercase}}</p>
+    </ion-item>
+  </ion-list>
+  <ion-row *ngIf="lugares?.length == 0 && firts" >
+      <ion-col text-center>
+          <h3>
+            No se han encontrado lugares.
+          </h3>
+      </ion-col>
+  </ion-row>
 </ion-content>
