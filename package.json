@@ -21,6 +21,7 @@
     "@angular/platform-browser": "4.1.2",
     "@angular/platform-browser-dynamic": "4.1.2",
     "@ionic-native/barcode-scanner": "^3.10.3",
+    "@ionic-native/calendar": "^3.10.3",
     "@ionic-native/core": "3.10.2",
     "@ionic-native/geolocation": "^3.10.3",
     "@ionic-native/native-geocoder": "^3.10.3",

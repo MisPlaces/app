@@ -2,6 +2,7 @@ import { ApiProvider } from './../../providers/api/api';
 import { Component, ViewChild } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation';
 import { TextToSpeech } from '@ionic-native/text-to-speech';
+import { Calendar } from '@ionic-native/calendar';
 import { IonicPage, NavController, NavParams, ToastController, Events, LoadingController, Select } from 'ionic-angular';
 
 /**
@@ -17,6 +18,7 @@ import { IonicPage, NavController, NavParams, ToastController, Events, LoadingCo
 })
 export class LugarPage {
 
+  existeEvento = false;
   loader: any;
   @ViewChild('selectLang') selectLang: Select;
   comentarios: Array<any>;
@@ -33,6 +35,7 @@ export class LugarPage {
     public events: Events,
     private geolocation: Geolocation,
     private tts: TextToSpeech,
+    private calendar: Calendar,
     public loadingCtrl: LoadingController) {
 
     this.lugar = this.navParams.get('lugar');
@@ -61,6 +64,17 @@ export class LugarPage {
 
       }
       );
+
+      this.calendar.findEvent(this.lugar.nombre, null , this.lugar.resumen, new Date(this.lugar.fechaEventoInicio), new Date(this.lugar.fechaEventoFin))
+            .then((ev) => {
+                if (ev.length > 0){
+                    this.existeEvento = true;
+                }
+
+            }).catch(() => {
+            console.log("no existe el evento");
+
+        });
 
     // this.comentarios = [
     //   { "nombre": "sergio", "apellido": "sanabria", "texto": "hola", "avatar": "https://pbs.twimg.com/profile_images/732548853879070720/zFzX7xd4_bigger.jpg" },
@@ -167,7 +181,7 @@ export class LugarPage {
     });
     if (!this.played) {
       let textToTranslate = this.lugar.nombre + " . " + this.lugar.resumen + " . " + this.lugar.cuerpo;
-      let text:string;
+      let text: string;
       if (this.translateTo == 'es') {
         text = textToTranslate;
       } else {
@@ -205,6 +219,30 @@ export class LugarPage {
       this.played = false;
     }
 
+  }
+
+  crearEvento() {
+
+
+    this.calendar.createEvent(this.lugar.nombre, null , this.lugar.resumen, new Date(this.lugar.fechaEventoInicio), new Date(this.lugar.fechaEventoFin))
+      .then((ev) => {
+        let toast = this.toastCtrl.create({
+          message: "Evento creado",
+          duration: 2520,
+          position: 'center'
+        });
+
+        toast.present(toast);
+        this.existeEvento = true;
+      }).catch(() => {
+        let toast = this.toastCtrl.create({
+          message: "Error al crear el evento",
+          duration: 2520,
+          position: 'center'
+        });
+
+        toast.present(toast);
+      });
   }
 
 }

@@ -105,6 +105,24 @@
       </div>
     </div>
   </ion-row>
+  <ion-row *ngIf="lugar.tipo == 'evento'">
+    <ion-col col-8>
+      <div>
+        <b>Inicio del evento</b> {{lugar.fechaEventoInicio | date: 'dd/MM/yyyy hh:mm'}}
+      </div>
+      <b>Fin del evento</b> {{lugar.fechaEventoFin | date: 'dd/MM/yyyy hh:mm'}}
+    </ion-col>
+    <ion-col col-4 text-center>
+
+      <button *ngIf="!existeEvento" danger ion-button primary (click)="crearEvento()">
+                    Crear evento
+                </button>
+      <button *ngIf="existeEvento" [disabled]="existeEvento" danger ion-button primary (click)="crearEvento()">
+                    Ya se ha creado un evento
+                </button>
+    </ion-col>
+
+  </ion-row>
 
   <ion-row>
     <ion-col>

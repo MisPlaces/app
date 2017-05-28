@@ -1,3 +1,4 @@
+import { Calendar } from '@ionic-native/calendar';
 import { ComidaFiltrosPageModule } from './../pages/comida-filtros/comida-filtros.module';
 import { ItinerarioConfirmadoPageModule } from './../pages/itinerario-confirmado/itinerario-confirmado.module';
 import { ItinerarioPageModule } from './../pages/itinerario/itinerario.module';
@@ -89,7 +90,8 @@ import { HomePage } from '../pages/home/home';
     MapService,
     GeocodingService,
     NativeGeocoder,
-    TextToSpeech
+    TextToSpeech,
+    Calendar
   ]
 })
 export class AppModule { }
