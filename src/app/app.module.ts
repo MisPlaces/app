@@ -1,3 +1,5 @@
+import { ItinerarioConfirmadoPageModule } from './../pages/itinerario-confirmado/itinerario-confirmado.module';
+import { ItinerarioPageModule } from './../pages/itinerario/itinerario.module';
 import { BusquedaAvanzadaLugaresFiltrosPageModule } from './../pages/busqueda-avanzada-lugares-filtros/busqueda-avanzada-lugares-filtros.module';
 import { BuscarLugaresPageModule } from './../pages/buscar-lugares/buscar-lugares.module';
 import { SalidaNocturnaPageModule } from './../pages/salida-nocturna/salida-nocturna.module';
@@ -60,6 +62,8 @@ import { HomePage } from '../pages/home/home';
     IonicModule.forRoot(MyApp),
     DestinoPageModule,
     BuscarLugaresPageModule,
+    ItinerarioPageModule,
+    ItinerarioConfirmadoPageModule,
     BusquedaAvanzadaLugaresFiltrosPageModule,
     IonicStorageModule.forRoot({
       name: '__misplaces',

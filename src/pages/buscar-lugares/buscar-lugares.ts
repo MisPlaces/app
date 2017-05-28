@@ -1,3 +1,4 @@
+import { ItinerarioPage } from './../itinerario/itinerario';
 import { BusquedaAvanzadaLugaresFiltrosPage } from './../busqueda-avanzada-lugares-filtros/busqueda-avanzada-lugares-filtros';
 import { LugarPage } from './../lugar/lugar';
 import { ApiProvider } from './../../providers/api/api';
@@ -19,7 +20,7 @@ export class BuscarLugaresPage {
   lugares: any;
   loader: any;
   search: any;
-
+  btnFinalizar = false;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -41,6 +42,9 @@ export class BuscarLugaresPage {
         if (this.navParams.get('categoria')) {
           this.search = this.navParams.get('categoria');
           this.transform();
+        }
+        if (this.navParams.get('finaliza')) {
+          this.btnFinalizar = true;
         }
 
         this.dismissLoading();
@@ -95,6 +99,10 @@ export class BuscarLugaresPage {
     }
 
     this.presentToast('Lugar no encontrado!');
+  }
+
+  goToAlacarte(){
+    this.navCtrl.push(ItinerarioPage);
   }
 
   presentLoading() {
