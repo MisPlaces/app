@@ -1,3 +1,4 @@
+import { ComidaFiltrosPageModule } from './../pages/comida-filtros/comida-filtros.module';
 import { ItinerarioConfirmadoPageModule } from './../pages/itinerario-confirmado/itinerario-confirmado.module';
 import { ItinerarioPageModule } from './../pages/itinerario/itinerario.module';
 import { BusquedaAvanzadaLugaresFiltrosPageModule } from './../pages/busqueda-avanzada-lugares-filtros/busqueda-avanzada-lugares-filtros.module';
@@ -64,6 +65,7 @@ import { HomePage } from '../pages/home/home';
     BuscarLugaresPageModule,
     ItinerarioPageModule,
     ItinerarioConfirmadoPageModule,
+    ComidaFiltrosPageModule,
     BusquedaAvanzadaLugaresFiltrosPageModule,
     IonicStorageModule.forRoot({
       name: '__misplaces',

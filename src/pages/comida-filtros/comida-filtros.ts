@@ -21,4 +21,8 @@ export class ComidaFiltrosPage {
     console.log('ionViewDidLoad ComidaFiltrosPage');
   }
 
+  aplicar() {
+    this.navCtrl.pop();
+  }
+
 }

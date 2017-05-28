@@ -1,3 +1,4 @@
+import { ComidaFiltrosPage } from './../comida-filtros/comida-filtros';
 import { ItinerarioPage } from './../itinerario/itinerario';
 import { BusquedaAvanzadaLugaresFiltrosPage } from './../busqueda-avanzada-lugares-filtros/busqueda-avanzada-lugares-filtros';
 import { LugarPage } from './../lugar/lugar';
@@ -64,7 +65,11 @@ export class BuscarLugaresPage {
   }
 
   openBuscar() {
-    this.navCtrl.push(BusquedaAvanzadaLugaresFiltrosPage);
+    if (this.search == 'restaurante') {
+      this.navCtrl.push(ComidaFiltrosPage);
+    } else {
+      this.navCtrl.push(BusquedaAvanzadaLugaresFiltrosPage);
+    }
   }
 
   transform() {
@@ -101,7 +106,7 @@ export class BuscarLugaresPage {
     this.presentToast('Lugar no encontrado!');
   }
 
-  goToAlacarte(){
+  goToAlacarte() {
     this.navCtrl.push(ItinerarioPage);
   }
 

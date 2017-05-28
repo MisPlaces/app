@@ -27,13 +27,17 @@
         <ion-card (click)="itemSelected(lugar)" tappable>
 
           <ion-item>
-            <ion-icon [name]="lugar.icono ?lugar.icono:'home'" item-left no-padding></ion-icon>
+            <!--<ion-icon [name]="lugar.icono ?lugar.icono:'home'" item-left no-padding></ion-icon>-->
             <h2>{{lugar.nombre}}</h2>
             <p>{{lugar.resumen}}</p>
           </ion-item>
 
           <img class="altura-lista" [src]="lugar.imagen_url?lugar.imagen_url:''">
-
+          <ion-row no-padding>
+            <ion-col>
+              <ion-checkbox color="ionblue" checked="false"></ion-checkbox>
+            </ion-col>
+          </ion-row>
         </ion-card>
       </ion-col>
     </ion-row>
@@ -46,6 +50,6 @@
     </ion-row>
   </ion-grid>
   <button ion-button *ngIf="btnFinalizar" color="positive" block (click)="goToAlacarte()">
-    alacarte
+    Viaje a la Carta
   </button>
 </ion-content>

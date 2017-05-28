@@ -1,3 +1,4 @@
+import { SeleccionarModoPage } from './../seleccionar-modo/seleccionar-modo';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, LoadingController, Events } from 'ionic-angular';
 import { HomePage } from "../home/home";
@@ -58,7 +59,7 @@ export class Login {
                 console.log("Already authorized");
                 this.events.publish('user:login');
                 // this.loading.dismiss();
-                this.navCtrl.setRoot(HomePage);
+                this.navCtrl.setRoot(SeleccionarModoPage);
             }
             ).catch(this.handleError.bind(this));
 
@@ -67,7 +68,8 @@ export class Login {
     iniciarSesion() {
 
         this.presentLoading('Ingresando');
-        this.navCtrl.setRoot(HomePage);
+        // this.navCtrl.setRoot(HomePage);
+        this.navCtrl.setRoot(SeleccionarModoPage);
         this.loader.dismiss();
 
         // let credentials = {

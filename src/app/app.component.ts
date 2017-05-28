@@ -11,7 +11,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: any = SeleccionarModoPage;
+  rootPage: any = Login;
   @ViewChild(Nav) nav: Nav;
 
   constructor(platform: Platform,

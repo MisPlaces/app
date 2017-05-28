@@ -23,7 +23,6 @@ export class BusquedaAvanzadaLugaresFiltrosPage {
 
   aplicar() {
     this.navCtrl.pop();
-
   }
 
 }
