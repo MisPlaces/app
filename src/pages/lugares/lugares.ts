@@ -29,7 +29,6 @@ export class LugaresPage {
 
         this.init();
 
-
     }
 
     init(refresher?) {

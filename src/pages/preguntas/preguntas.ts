@@ -1,6 +1,6 @@
 import { LugaresPage } from './../lugares/lugares';
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
+import { IonicPage, NavController, Slides } from 'ionic-angular';
 
 /**
  * Generated class for the PreguntasPage page.

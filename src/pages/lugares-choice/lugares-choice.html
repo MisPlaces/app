@@ -3,6 +3,11 @@
     <ion-title>
       Lugares
     </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openBuscar()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page2">
@@ -11,7 +16,57 @@
       Estuvimos evaluando tus preferencias y encontramos unos lugares fantasticos para vos:
     </p>
   </div>
-  <ion-list id="lugares-list1">
+  <ion-row>
+    <h1>
+      Hoteles
+    </h1>
+    <div class="scroll-hidden-x-container">
+      <div class="scroll-hidden-x-inner">
+        <ion-row nowrap>
+          <ion-col *ngFor="let hotel of hoteles" class="text-center" col-6>
+            <ion-thumbnail item-left>
+              <img [src]=hotel.imagen_url (click)="verLugar(hotel)"/>
+            </ion-thumbnail>
+            <h2>
+              {{hotel.nombre}}
+            </h2>
+            <ion-row>
+              <ion-col text-center>
+                <ion-checkbox color="ionblue" checked="false"></ion-checkbox>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+  </ion-row>
+
+  <ion-row>
+    <h1>
+      Posadas
+    </h1>
+    <div class="scroll-hidden-x-container">
+      <div class="scroll-hidden-x-inner">
+        <ion-row nowrap>
+          <ion-col *ngFor="let posada of posadas" class="text-center" col-6>
+            <ion-thumbnail item-left>
+              <img [src]=posada.imagen_url (click)="verLugar(posada)"/>
+            </ion-thumbnail>
+            <h2>
+              {{posada.nombre}}
+            </h2>
+            <ion-row>
+              <ion-col text-center>
+                <ion-checkbox item-start color="ionblue" checked="false"></ion-checkbox>                
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+  </ion-row>
+
+  <!--<ion-list id="lugares-list1">
     <ion-item id="lugares-list-item-container3">
       <div id="lugares-markdown6" class="show-list-numbers-and-dots">
         <p style="margin-top:0px;color:#000000;">
@@ -42,8 +97,8 @@
         Posadas La Linda
       </h2>
     </ion-item>
-  </ion-list>
-  <button id="lugares-button4" ion-button color="positive" block on-click="goToActividades()">
+  </ion-list>-->
+  <button id="lugares-button4" ion-button color="positive" block (click)="goToActividades()">
     Revisemos algunas actividades
   </button>
 </ion-content>

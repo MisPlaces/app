@@ -148,7 +148,8 @@ export class LugaresMapaPage {
 
       let newDiv: HTMLDivElement;
       newDiv = document.createElement("div");
-      let newContent = document.createTextNode(e.nombre.toUpperCase());
+      // let newContent = document.createTextNode(e.nombre.toUpperCase());
+      document.createTextNode(e.nombre.toUpperCase());
 
 
       // let img: HTMLImageElement;

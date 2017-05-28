@@ -21,4 +21,9 @@ export class BusquedaAvanzadaLugaresFiltrosPage {
     console.log('ionViewDidLoad BusquedaAvanzadaLugaresFiltrosPage');
   }
 
+  aplicar() {
+    this.navCtrl.pop();
+
+  }
+
 }

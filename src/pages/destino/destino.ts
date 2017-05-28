@@ -34,7 +34,7 @@ export class DestinoPage {
       console.log(resp);
 
       let mapId = 'mapa-destino-id';
-      let zoom = 15;
+      // let zoom = 15;
 
       this.contenedorMapa.nativeElement.innerHTML = '<div class="angular-leaflet-map" style="height:60%;" id="' + mapId + '"></div>';
 

@@ -1,0 +1,48 @@
+<!--
+  Generated template for the BuscarLugaresPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-searchbar [(ngModel)]="search" (ionInput)="transform()" debounce=500 placeholder="Buscar lugares"></ion-searchbar>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openBuscar()">
+        <ion-icon name="cog"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-grid no-padding>
+
+    <ion-row *ngIf="lugares?.length > 0">
+      <ion-col no-padding col-6 col-md-3 col-lg-4 col-xl-3 *ngFor="let lugar of lugares">
+        <ion-card (click)="itemSelected(lugar)" tappable>
+
+          <ion-item>
+            <ion-icon [name]="lugar.icono ?lugar.icono:'home'" item-left no-padding></ion-icon>
+            <h2>{{lugar.nombre}}</h2>
+            <p>{{lugar.resumen}}</p>
+          </ion-item>
+
+          <img class="altura-lista" [src]="lugar.imagen_url?lugar.imagen_url:''">
+
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="lugares == 0">
+      <ion-col text-center>
+        <h3>
+          No se han encontrado lugares
+        </h3>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

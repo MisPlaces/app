@@ -6,7 +6,7 @@ import { Injectable, Pipe } from '@angular/core';
 @Injectable()
 export class FilterPipe {
 
-    transform(items: any[], arg1: any, arg2): any {
+    transform(items: any[], arg1: any, arg2?): any {
 
 
         if (!(typeof items === "undefined") && !(typeof arg1 === "undefined") && !(typeof arg2 === "undefined")) {

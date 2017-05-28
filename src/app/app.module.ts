@@ -1,3 +1,5 @@
+import { BusquedaAvanzadaLugaresFiltrosPageModule } from './../pages/busqueda-avanzada-lugares-filtros/busqueda-avanzada-lugares-filtros.module';
+import { BuscarLugaresPageModule } from './../pages/buscar-lugares/buscar-lugares.module';
 import { SalidaNocturnaPageModule } from './../pages/salida-nocturna/salida-nocturna.module';
 import { RestaurantesPageModule } from './../pages/restaurantes/restaurantes.module';
 import { MenuPageModule } from './../pages/menu/menu.module';
@@ -28,7 +30,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from "@angular/http";
 import { IonicStorageModule } from "@ionic/storage";
-import {TextToSpeech} from '@ionic-native/text-to-speech';
+import { TextToSpeech } from '@ionic-native/text-to-speech';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
@@ -57,6 +59,8 @@ import { HomePage } from '../pages/home/home';
     SalidaNocturnaPageModule,
     IonicModule.forRoot(MyApp),
     DestinoPageModule,
+    BuscarLugaresPageModule,
+    BusquedaAvanzadaLugaresFiltrosPageModule,
     IonicStorageModule.forRoot({
       name: '__misplaces',
       driverOrder: ['indexeddb', 'sqlite', 'websql']

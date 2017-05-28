@@ -1,4 +1,3 @@
-import { DestinoPage } from './../pages/destino/destino';
 import { SeleccionarModoPage } from './../pages/seleccionar-modo/seleccionar-modo';
 
 import { AuthProvider } from './../providers/auth/auth';
@@ -8,8 +7,6 @@ import { Platform, Events, MenuController, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
-import { LugaresPage } from "../pages/lugares/lugares";
 @Component({
   templateUrl: 'app.html'
 })
