@@ -1,7 +1,8 @@
 import { ApiProvider } from './../../providers/api/api';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation';
-import { IonicPage, NavController, NavParams, ToastController, Events, LoadingController } from 'ionic-angular';
+import { TextToSpeech } from '@ionic-native/text-to-speech';
+import { IonicPage, NavController, NavParams, ToastController, Events, LoadingController, Select } from 'ionic-angular';
 
 /**
  * Generated class for the LugarPage page.
@@ -17,11 +18,13 @@ import { IonicPage, NavController, NavParams, ToastController, Events, LoadingCo
 export class LugarPage {
 
   loader: any;
-
+  @ViewChild('selectLang') selectLang: Select;
   comentarios: Array<any>;
   imagenes: Array<any>;
   comentario: any;
   lugar: any;
+  played = false;
+  translateTo = 'es';
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -29,6 +32,7 @@ export class LugarPage {
     private toastCtrl: ToastController,
     public events: Events,
     private geolocation: Geolocation,
+    private tts: TextToSpeech,
     public loadingCtrl: LoadingController) {
 
     this.lugar = this.navParams.get('lugar');
@@ -45,6 +49,7 @@ export class LugarPage {
         this.dismissLoading();
       },
       err => {
+        this.dismissLoading();
         if (err.status == 401) {
           this.presentToast('Sesión expirada');
           this.events.publish('user:logout');
@@ -53,7 +58,7 @@ export class LugarPage {
           this.presentToast(JSON.parse(err._body).message)
           this.navCtrl.pop();
         }
-        this.dismissLoading();
+
       }
       );
 
@@ -148,6 +153,57 @@ export class LugarPage {
 
 
     });
+
+  }
+
+  openLanguajes() {
+    this.selectLang.open();
+  }
+
+  async speak() {
+
+    let loader = this.loadingCtrl.create({
+      content: "Buscando traducción",
+    });
+    if (!this.played) {
+      let textToTranslate = this.lugar.nombre + " . " + this.lugar.resumen + " . " + this.lugar.cuerpo;
+      let text:string;
+      if (this.translateTo == 'es') {
+        text = textToTranslate;
+      } else {
+        loader.present();
+        let texObj = await this.apiProvider.postTranslate(textToTranslate, 'es', this.translateTo, loader);
+
+        if (texObj) {
+          text = texObj[0];
+        } else {
+          text = 'no hay traducción';
+        }
+      }
+
+      console.log(text);
+
+      let locale = 'es-AR';
+      if (this.translateTo == 'es') {
+        locale = 'es-AR';
+      } else if (this.translateTo == 'pt') {
+        locale = 'pt-BR';
+      } else if (this.translateTo == 'en') {
+        locale = 'en-US';
+      }
+      this.played = true;
+      this.tts.speak({
+        text: text,
+        locale: locale,
+      }).then((data) => {
+        this.played = false;
+      });
+    } else {
+      this.tts.speak('').then((data) => {
+        console.log(data)
+      });
+      this.played = false;
+    }
 
   }
 

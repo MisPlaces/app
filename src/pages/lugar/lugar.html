@@ -8,7 +8,27 @@
 
   <ion-navbar>
     <ion-title>{{lugar.nombre}}</ion-title>
+    <ion-buttons end>
+      <button (click)="openLanguajes()" icon-only ion-button>
+                <ion-icon name="globe"></ion-icon>
+            </button>
+    </ion-buttons>
   </ion-navbar>
+  <ion-item [hidden]="true">
+    <ion-label>Elegí un idioma</ion-label>
+    <ion-select [cancelText]="'Cancelar'" [okText]="'OK'" #selectLang center [(ngModel)]="translateTo">
+      <ion-option [value]="'es'">
+        Español
+      </ion-option>
+      <ion-option [value]="'pt'">
+        Portugués
+      </ion-option>
+      <ion-option [value]="'en'">
+        Inglés
+      </ion-option>
+    </ion-select>
+  </ion-item>
+
 
 </ion-header>
 
@@ -97,10 +117,10 @@
   <ion-list no-lines>
     <ion-item *ngFor="let c of comentarios" no-lines>
       <ion-avatar item-left>
-        <img [src]=c.persona.avatar>
+        <img [src]=c.avatar>
       </ion-avatar>
-      <h2>{{c.persona.nombre_para_mostrar }}</h2>
-      <p>{{c.comentario}}</p>
+      <h2>{{c.nombre_para_mostrar }}</h2>
+      <p>{{c.texto}}</p>
     </ion-item>
     <ion-item>
       <ion-avatar item-left>
@@ -115,41 +135,10 @@
             </button>
     </ion-item>
   </ion-list>
-
-
-  <!--<ion-row>
-    <ion-col>
-      <img src="http://placehold.it/1920x800/007FFF">
-    </ion-col>
-  </ion-row>
-
-  <ion-row class="row-avatar">
-    <ion-col text-center>
-      <ion-avatar>
-        <img src="https://pbs.twimg.com/profile_images/732548853879070720/zFzX7xd4_bigger.jpg">
-      </ion-avatar>
-      <h2>sergio sanebrio</h2>
-    </ion-col>
-  </ion-row>
-
-  <ion-row>
-    <ion-col>
-      <ion-icon name="thumbs-down"></ion-icon> 0
-      <ion-icon name="thumbs-up"></ion-icon> 0
-    </ion-col>
-    <ion-col>
-      <button ion-button round>Ver Web</button>
-    </ion-col>
-    <ion-col></ion-col>
-  </ion-row>
-
-  <ion-list>-->
-
-  <!--<ion-item *ngFor="let item of character['items']">
-        {{item.title}}
-        <ion-note item-end>
-          {{item.note}}
-        </ion-note>
-      </ion-item>-->
-  <!--</ion-list>-->
+  <ion-fab right bottom>
+    <button (click)="speak()" ion-fab color="primary">
+            <ion-icon *ngIf="!played" name="play"></ion-icon>
+            <ion-icon *ngIf="played" name="square"></ion-icon>
+        </button>
+  </ion-fab>
 </ion-content>

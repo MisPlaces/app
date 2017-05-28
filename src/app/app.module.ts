@@ -28,7 +28,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from "@angular/http";
 import { IonicStorageModule } from "@ionic/storage";
-
+import {TextToSpeech} from '@ionic-native/text-to-speech';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
@@ -78,7 +78,8 @@ import { HomePage } from '../pages/home/home';
     Geolocation,
     MapService,
     GeocodingService,
-    NativeGeocoder
+    NativeGeocoder,
+    TextToSpeech
   ]
 })
 export class AppModule { }

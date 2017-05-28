@@ -99,6 +99,36 @@ export class ApiProvider {
             });
     }
 
+    postTranslate(text: string, de: string, a: string, loader) {
+        let url: string = 'https://translate.yandex.net/api/v1.5/tr.json/translate';
+        let key: string = 'trnsl.1.1.20170519T200854Z.95cf1a84685f66ce.ea8b334ba68d3267600cac16f770b8e5184a80da';
+        let options = new URLSearchParams();
+        options.set('lang', de + '-' + a);
+        options.set('key', key);
+        options.set('text', text);
+        return new Promise(
+            (resolve, reject) => {
+                this.http.post(url, options)
+                    .subscribe(
+                    res => {
+                        if (typeof loader !== 'undefined') {
+                            loader.dismissAll();
+                        }
+                        resolve(res.json().text);
+                    },
+                    (err) => {
+                        if (typeof loader !== 'undefined') {
+                            loader.dismissAll();
+                        }
+                        reject(err);
+                        console.error('err', err)
+                    }
+                    );
+
+            });
+
+    }
+
 
     put(resource: any, id: number, params): Promise<any> {
         return new Promise(
